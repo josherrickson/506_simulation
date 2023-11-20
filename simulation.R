@@ -1,4 +1,4 @@
-library(arm)
+suppressWarnings(library(arm))
 
 n <- 1000
 p <- 100

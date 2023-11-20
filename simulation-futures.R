@@ -1,7 +1,8 @@
-library(future)
-library(parallelly)
-library(parallel)
-library(arm)
+suppressMessages({library(future)
+  library(parallelly)
+  library(parallel)
+  library(arm)
+})
 
 cat("Number of cores detected by parallel  :", detectCores(), "\n")
 cat("Number of cores detected by parallelly:", availableCores(), "\n")
