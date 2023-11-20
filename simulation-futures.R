@@ -1,10 +1,18 @@
+library(future)
+library(parallelly)
+library(parallel)
+library(arm)
+
+cat("Number of cores detected by parallel  :", detectCores(), "\n")
+cat("Number of cores detected by parallelly:", availableCores(), "\n")
+
 n <- 1000
 p <- 100
 
 x <- matrix(rnorm(n * p), ncol = p)
 
-pr1 <- arm::invlogit(rowSums(x)) # all x's informative
-pr2 <- arm::invlogit(x[,1]) # Only x1 informative
+pr1 <- invlogit(rowSums(x)) # all x's informative
+pr2 <- invlogit(x[,1]) # Only x1 informative
 
 f <- function(x, pr) {
   y <- rbinom(nrow(x), 1, prob = pr)
