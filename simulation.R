@@ -1,4 +1,4 @@
-suppressWarnings(library(arm))
+library(arm, quietly = TRUE, warn.conflicts = FALSE)
 
 n <- 1000
 p <- 100
