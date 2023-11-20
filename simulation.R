@@ -16,8 +16,8 @@ f <- function(x, pr) {
 
 reps <- 100
 
-save1 <- list()
-save2 <- list()
+save1 <- rep(-99999, reps)
+save2 <- rep(-99999, reps)
 system.time(for (i in seq_len(reps)) {
   save1[[i]] <- f(x, pr1)
   save2[[i]] <- f(x, pr2)
