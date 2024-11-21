@@ -1,10 +1,10 @@
-library(future, quietly = TRUE, warn.conflicts = FALSE)
-library(parallelly, quietly = TRUE, warn.conflicts = FALSE)
 library(parallel, quietly = TRUE, warn.conflicts = FALSE)
+library(parallelly, quietly = TRUE, warn.conflicts = FALSE)
+library(future, quietly = TRUE, warn.conflicts = FALSE)
 library(arm, quietly = TRUE, warn.conflicts = FALSE)
 
-cat("Number of cores detected by parallel  :", detectCores(), "\n")
-cat("Number of cores detected by parallelly:", availableCores(), "\n")
+cat("Number of cores detected :", detectCores(), "\n")
+cat("Number of cores available:", availableCores(), "\n")
 
 n <- 1000
 p <- 100
@@ -20,6 +20,7 @@ f <- function(x, pr) {
   return(mod$coef[2])
 }
 
+plan(multisession)
 reps <- 100
 
 save1 <- list()
