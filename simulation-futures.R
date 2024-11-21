@@ -25,14 +25,14 @@ reps <- 100
 
 save1 <- list()
 save2 <- list()
-system.time(for (i in seq_len(reps)) {
+print(system.time(for (i in seq_len(reps)) {
   save1[[i]] <- future(f(x, pr1), seed = TRUE)
   save2[[i]] <- future(f(x, pr2), seed = TRUE)
-})
+}))
 
 save1 <- sapply(save1, value)
 save2 <- sapply(save2, value)
 
-matrix(c(median(save1), median(save2), IQR(save1), IQR(save2)),
-       byrow = TRUE, nrow = 2,
-       dimnames = list(c("median", "IQR"), c("all x", "only x1")))
+print(matrix(c(median(save1), median(save2), IQR(save1), IQR(save2)),
+             byrow = TRUE, nrow = 2,
+             dimnames = list(c("median", "IQR"), c("all x", "only x1"))))
